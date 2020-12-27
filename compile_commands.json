@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/spy/Documents/cpp/poker/server/build",
+  "command": "/usr/bin/c++  -DPISTACHE_USE_SSL -I/home/spy/Documents/cpp/poker/server/include    -std=gnu++17 -o CMakeFiles/server.dir/src/main.cpp.o -c /home/spy/Documents/cpp/poker/server/src/main.cpp",
+  "file": "/home/spy/Documents/cpp/poker/server/src/main.cpp"
+}
+]
