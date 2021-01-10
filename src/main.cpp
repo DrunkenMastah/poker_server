@@ -10,10 +10,12 @@ void edit_variant(unsigned x){
 void edit_variant(server::round_state::player_state x){
   std::cout<<"I am en enum"<<std::endl;
 }
-int main() {
+int main(int argc,char** argv) {
   std::thread a(
-    [](){
-      Http::listenAndServe<pokerest>(Pistache::Address("*:9081"));
+    [&](){
+      MyServerApp app;
+      app.run(argc,argv);
+      //Http::listenAndServe<pokerest>(Pistache::Address("*:9081"));
     }
   );
   a.detach();

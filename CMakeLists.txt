@@ -11,13 +11,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMA pKE_EXPORT_COMPILE_COMMANDS ON)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
-find_package(Pistache 0.0.2 REQUIRED)
+find_package(Poco REQUIRED COMPONENTS Foundation Util JSON Net)
 add_executable(server 
     src/main.cpp
     )
 target_include_directories(server PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries( server PRIVATE 
-    pistache_shared
+    Poco::Poco
     Threads::Threads
 )
 add_custom_target(run
