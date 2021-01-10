@@ -28,16 +28,11 @@ public:
     resp.setContentType("text/html");
 
     ostream& out = resp.send();
-    out << "<h1>Hello world!</h1>"
-        << "<p>Count: "  << ++count         << "</p>"
-        << "<p>Host: "   << req.getHost()   << "</p>"
-        << "<p>Method: " << req.getMethod() << "</p>"
-        << "<p>URI: "    << req.getURI()    << "</p>";
+    if(req.getURI()=="/common_data"){
+      out<<server::GlobalRoundState;
+    }
     out.flush();
 
-    cout << endl
-         << "Response sent for count=" << count
-         << " and URI=" << req.getURI() << endl;
   }
 
 private:
@@ -49,7 +44,7 @@ int MyRequestHandler::count = 0;
 class MyRequestHandlerFactory : public HTTPRequestHandlerFactory
 {
 public:
-  virtual HTTPRequestHandler* createRequestHandler(const HTTPServerRequest &)
+  virtual HTTPRequestHandler* createRequestHandler(const HTTPServerRequest & request)
   {
     return new MyRequestHandler;
   }

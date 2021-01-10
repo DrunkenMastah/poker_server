@@ -14,6 +14,7 @@ find_package(Threads REQUIRED)
 find_package(Poco REQUIRED COMPONENTS Foundation Util JSON Net)
 add_executable(server 
     src/main.cpp
+    src/combinations.cpp
     )
 target_include_directories(server PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries( server PRIVATE 
@@ -26,6 +27,6 @@ add_custom_target(run
     WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
 )
 
-# sudo add-apt-repository ppa:pistache+team/stable
-# sudo apt update
-# sudo apt install libpistache-dev
+# conan install . -if build
+# cmake -B build -GNinja -DCMAKE_TOOLCHAIN_FILE=build/conan_paths.cmake
+

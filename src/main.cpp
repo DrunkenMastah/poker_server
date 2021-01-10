@@ -1,6 +1,9 @@
-#include <pokerest.hpp>
-#include <deck.hpp>
+#include "common/card.hpp"
 #include <common/game_state.hpp>
+#include <combinations.hpp>
+#include <deck.hpp>
+#include <pokerest.hpp>
+
 #include <thread>
 #include <variant>
 
@@ -11,6 +14,15 @@ void edit_variant(server::round_state::player_state x){
   std::cout<<"I am en enum"<<std::endl;
 }
 int main(int argc,char** argv) {
+  auto c=combinations(std::array<card,7>{
+    card{symbols::clubs,1},
+    card{symbols::diamond,2},
+    card{symbols::spades,8},
+    card{symbols::hearts,4},
+    card{symbols::clubs,5},
+    card{symbols::clubs,6},
+    card{symbols::clubs,7},
+  });
   std::thread a(
     [&](){
       MyServerApp app;
